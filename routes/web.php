@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('main.index');
+
+//Route::get('/posts', 'PostController@index')->name('posts.index');
+//Route::get('/posts/create', 'PostController@create')->name('posts.create');
+
+//Route::resource('posts', PostController::class);
+//Route::resource('about', AboutController::class);
+//Route::resource('contacts', ContactController::class);
+Route::resources([
+    'posts' => PostController::class,
+    'about' => AboutController::class,
+    'contacts' => ContactController::class
+]);
+
+

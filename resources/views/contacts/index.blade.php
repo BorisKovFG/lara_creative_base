@@ -1,5 +1,4 @@
 @extends('layouts.main')
-
 @section('content')
-    Hello, World!!!
+    Contacts Page
 @endsection
