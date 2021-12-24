@@ -13,7 +13,10 @@ class IndexController extends Controller
     {
         $categoryId = $request->input('category');
         $categories = Category::all();
-        $posts = ($categoryId) ? Category::findOrFail($categoryId)->posts : Post::orderBy('id')->get();
+        $posts =
+            ($categoryId)
+            ? Category::findOrFail($categoryId)->posts()->orderBy('likes', 'desc')->get()
+            : Post::orderBy('likes', 'desc')->get();
         return view('posts.index', compact(['posts', 'categories']));
     }
 }
