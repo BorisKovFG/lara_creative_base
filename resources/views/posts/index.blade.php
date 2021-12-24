@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @include('posts.main_content')
 @section('inner_content')
+    @include('posts.index_filter_category')
+
     <table class="table">
         <thead>
         <tr>
@@ -11,7 +13,6 @@
             <th scope="col">Image</th>
             <th scope="col">likes</th>
             <th scope="col">Delete</th>
-
         </tr>
         </thead>
         <tbody>
@@ -35,4 +36,5 @@
         @endforeach
         </tbody>
     </table>
+{{--    {{ $posts->links() }}--}}
 @endsection
