@@ -36,5 +36,7 @@
         @endforeach
         </tbody>
     </table>
-{{--    {{ $posts->links() }}--}}
+{{--    <div>{{ (!$categoryId) ? $posts->links() : "Total: " . $posts->count() }}</div>--}}
+        <div class="mt-3">{{ $posts->links() }}</div>
+
 @endsection
