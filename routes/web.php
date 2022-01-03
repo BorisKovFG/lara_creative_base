@@ -15,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('main.index');
+Route::get('/', 'HomeController@index')->name('main.index');
 
 //Route::get('/posts', 'PostController@index')->name('posts.index');
 //Route::get('/posts/create', 'PostController@create')->name('posts.create');
@@ -36,7 +34,7 @@ Route::group(['namespace' => 'Post'], function () {
     Route::delete('posts/{post}', 'DestroyController')->name('posts.destroy');
 });
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::group(['namespace' => 'Post'], function () {
         Route::get('post', 'IndexController')->name('admin.post.index');
         Route::get('post/create', 'CreateController')->name('admin.post.create');
@@ -55,3 +53,7 @@ Route::get('contacts', 'ContactController@index')->name('contacts.index');
 Route::get('about', 'AboutController@index')->name('about.index');
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
