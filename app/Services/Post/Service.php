@@ -16,6 +16,7 @@ class Service
         $post = new Post($data);
         $post->save();
         $post->tags()->attach($dataTag);
+        return $post;
     }
 
     public function update($post, $data)
@@ -29,7 +30,7 @@ class Service
         }
         $post->tags()->sync($dataTag);
     }
-    
+
     public function destroy($post)
     {
         if ($post->tags) {
