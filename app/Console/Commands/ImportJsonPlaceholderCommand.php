@@ -42,9 +42,10 @@ class ImportJsonPlaceholderCommand extends Command
     {
         $import = new ImportDataClient();
         $response = $import->client->request('GET', 'posts');
-        $data = json_decode($response->getBody()->getContents());
-        return print_r(array_map(function ($item) {
-            return [$item->id, $item->title];
-        }, $data));
+        dd($response->getBody()->getContents());
+//        $data = json_decode($response->getBody()->getContents());
+//        return print_r(array_map(function ($item) {
+//            return [$item->id, $item->title];
+//        }, $data));
     }
 }
